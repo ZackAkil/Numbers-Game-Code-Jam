@@ -34,10 +34,10 @@ def round(a,b):
 
   if(a==b):
     return [a,b,2]
-  elif( ( ((a-b)-((a-b)%b))/b ) > 0 ):
+  elif( ( ((a-b)-((a-b)%b))/b ) > 0 ): #winning choice logic
     return [a,b,1]
   else:
-    return [a-b,b,0]
+    return [a-b,b,0] #else play the forced move
 
 def gameRange(a1,a2,b1,b2):
   output = 0
@@ -49,7 +49,7 @@ def gameRange(a1,a2,b1,b2):
 
 # final optimised solution for large data set 
 
-def subtractRange(a1,a2,b1,b2):
+def subtractRange(a1,a2,b1,b2): # find losing intersection with the game range
   if( ( a1>b2 )or( a2<b1 ) ): # no intersection
     return a2-a1+1
   elif( ( a1 <= b1 )and( a2 >= b2 ) ):# complete internal intersection
