@@ -16,7 +16,7 @@ We will say (A, B) is a winning position if Arya can always win a game that star
 Given four integers A1, A2, B1, B2, count how many winning positions (A, B) there are with A1 ≤ A ≤ A2 and B1 ≤ B ≤ B2.
 
 ##Solution theory
-The script initially just brute forced each possible game scenario to see if it was a win or a lose for Arya using a observed winning logic of:
+The script initially brute forced each possible game scenario to see if it was a win or a lose for Arya using a observed winning logic of:
 Whoever is the first to "get a choice of multiple moves were the output of the moves do not give the next player the same choice" is the winner, otherwise play the "forced" game to the end to see who is the winner.
 
 The approach above is however too slow to compute the large data set in time. Therefore the code was used to generate the outputs of sequential game scenario (e.g [1,10],[2,10],[3,10] etc) in order to perform data analysis to find a trend which can be exploited for solving the problem faster. Discovered was a trend (shown in the graph below) which involved multiplying the number in a game scenario by the magic ratio which would give the upper bounds of when it would start losing games for that players turn. The lower bounds is equal to the upper bounds - the number itself. This “losing range” is then subtracted from the game scenario ranges were it intersects which produced the total number of winning games.
