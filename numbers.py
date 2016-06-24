@@ -49,21 +49,13 @@ def gameRange(a1,a2,b1,b2):
 
 # final optimised solution for large data set 
 
-def subtractRange(a1,a2,b1,b2): # find losing intersection with the game range
-  if( ( a1>b2 )or( a2<b1 ) ): # no intersection
-    return a2-a1+1
-  elif( ( a1 <= b1 )and( a2 >= b2 ) ):# complete internal intersection
-    return (a2-a1)-(b2-b1)
-  elif( ( a1 >= b1 )and( a2 <= b2 ) ):# complete outer intersection
-    return 0
-  elif( ( a1 > b1 )and( a2 > b2 ) ):# left hand partial intersect
-    return (a2-a1)-( (b2-b1)-(a1-b1) )
-  elif( ( a1 < b1 )and( a2 < b2 ) ):# right hand partial intersect
-    return (a2-a1)-( (b2-b1)-(b2-a2) )
-
-  print("not ready for this a - {},{} b - {},{} "
-    .format(a1,a2,b1,b2))
-  return 0
+def subtractRange(a1,a2,b1,b2):
+  lower = max(a1,b1)
+  upper = min(a2,b2)
+  if lower > upper:
+    return (a2-a1)+1
+  else:
+    return (a2-a1)-(upper-lower)
 
 def losingRange(val):
   a1 =  math.ceil(val * (golden - 1))
